@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /home/timurnogaev/unix-shell-and-utils-TimurN4/OOP_3Laba
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -94,51 +84,6 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"gmock\" \"gtest\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -172,102 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gtest_lib
+# Target rules for targets named GeometryProject
 
 # Build rule for target.
-gtest_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_lib
-.PHONY : gtest_lib
+GeometryProject: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GeometryProject
+.PHONY : GeometryProject
 
 # fast build rule for target.
-gtest_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/build
-.PHONY : gtest_lib/fast
-
-#=============================================================================
-# Target rules for targets named gtest_exe
-
-# Build rule for target.
-gtest_exe: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_exe
-.PHONY : gtest_exe
-
-# fast build rule for target.
-gtest_exe/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_exe.dir/build.make CMakeFiles/gtest_exe.dir/build
-.PHONY : gtest_exe/fast
-
-#=============================================================================
-# Target rules for targets named tests
-
-# Build rule for target.
-tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
-.PHONY : tests
-
-# fast build rule for target.
-tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-.PHONY : tests/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+GeometryProject/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/build
+.PHONY : GeometryProject/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_exe.dir/build.make CMakeFiles/gtest_exe.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -275,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_exe.dir/build.make CMakeFiles/gtest_exe.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -283,7 +150,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_exe.dir/build.make CMakeFiles/gtest_exe.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 src/point.o: src/point.cpp.o
@@ -291,7 +158,7 @@ src/point.o: src/point.cpp.o
 
 # target to build an object file
 src/point.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/point.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/point.cpp.o
 .PHONY : src/point.cpp.o
 
 src/point.i: src/point.cpp.i
@@ -299,7 +166,7 @@ src/point.i: src/point.cpp.i
 
 # target to preprocess a source file
 src/point.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/point.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/point.cpp.i
 .PHONY : src/point.cpp.i
 
 src/point.s: src/point.cpp.s
@@ -307,7 +174,7 @@ src/point.s: src/point.cpp.s
 
 # target to generate assembly for a file
 src/point.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/point.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/point.cpp.s
 .PHONY : src/point.cpp.s
 
 src/rectangle.o: src/rectangle.cpp.o
@@ -315,7 +182,7 @@ src/rectangle.o: src/rectangle.cpp.o
 
 # target to build an object file
 src/rectangle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/rectangle.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/rectangle.cpp.o
 .PHONY : src/rectangle.cpp.o
 
 src/rectangle.i: src/rectangle.cpp.i
@@ -323,7 +190,7 @@ src/rectangle.i: src/rectangle.cpp.i
 
 # target to preprocess a source file
 src/rectangle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/rectangle.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/rectangle.cpp.i
 .PHONY : src/rectangle.cpp.i
 
 src/rectangle.s: src/rectangle.cpp.s
@@ -331,7 +198,7 @@ src/rectangle.s: src/rectangle.cpp.s
 
 # target to generate assembly for a file
 src/rectangle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/rectangle.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/rectangle.cpp.s
 .PHONY : src/rectangle.cpp.s
 
 src/square.o: src/square.cpp.o
@@ -339,7 +206,7 @@ src/square.o: src/square.cpp.o
 
 # target to build an object file
 src/square.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/square.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/square.cpp.o
 .PHONY : src/square.cpp.o
 
 src/square.i: src/square.cpp.i
@@ -347,7 +214,7 @@ src/square.i: src/square.cpp.i
 
 # target to preprocess a source file
 src/square.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/square.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/square.cpp.i
 .PHONY : src/square.cpp.i
 
 src/square.s: src/square.cpp.s
@@ -355,7 +222,7 @@ src/square.s: src/square.cpp.s
 
 # target to generate assembly for a file
 src/square.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/square.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/square.cpp.s
 .PHONY : src/square.cpp.s
 
 src/triangle.o: src/triangle.cpp.o
@@ -363,7 +230,7 @@ src/triangle.o: src/triangle.cpp.o
 
 # target to build an object file
 src/triangle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/triangle.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/triangle.cpp.o
 .PHONY : src/triangle.cpp.o
 
 src/triangle.i: src/triangle.cpp.i
@@ -371,7 +238,7 @@ src/triangle.i: src/triangle.cpp.i
 
 # target to preprocess a source file
 src/triangle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/triangle.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/triangle.cpp.i
 .PHONY : src/triangle.cpp.i
 
 src/triangle.s: src/triangle.cpp.s
@@ -379,32 +246,8 @@ src/triangle.s: src/triangle.cpp.s
 
 # target to generate assembly for a file
 src/triangle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtest_lib.dir/build.make CMakeFiles/gtest_lib.dir/src/triangle.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GeometryProject.dir/build.make CMakeFiles/GeometryProject.dir/src/triangle.cpp.s
 .PHONY : src/triangle.cpp.s
-
-test/test.o: test/test.cpp.o
-.PHONY : test/test.o
-
-# target to build an object file
-test/test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/test.cpp.o
-.PHONY : test/test.cpp.o
-
-test/test.i: test/test.cpp.i
-.PHONY : test/test.i
-
-# target to preprocess a source file
-test/test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/test.cpp.i
-.PHONY : test/test.cpp.i
-
-test/test.s: test/test.cpp.s
-.PHONY : test/test.s
-
-# target to generate assembly for a file
-test/test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/test.cpp.s
-.PHONY : test/test.cpp.s
 
 # Help Target
 help:
@@ -413,19 +256,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_exe"
-	@echo "... gtest_lib"
-	@echo "... gtest_main"
-	@echo "... tests"
+	@echo "... GeometryProject"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -441,9 +273,6 @@ help:
 	@echo "... src/triangle.o"
 	@echo "... src/triangle.i"
 	@echo "... src/triangle.s"
-	@echo "... test/test.o"
-	@echo "... test/test.i"
-	@echo "... test/test.s"
 .PHONY : help
 
 

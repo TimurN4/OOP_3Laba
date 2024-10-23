@@ -1,37 +1,60 @@
 cmake_minimum_required(VERSION 3.10)
-project(gtest)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# Устанавливаем имя проекта
+project(GeometryProject)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=maybe-uninitialized")
+# Указываем стандарт C++11 или выше
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.15.2
-  TLS_VERIFY false
+# Добавляем путь к заголовочным файлам
+include_directories(include)
+
+# Добавляем исходные файлы
+set(SOURCE_FILES
+    main.cpp
+    src/point.cpp
+    src/triangle.cpp
+    src/rectangle.cpp
+    src/square.cpp
 )
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+# Добавляем исполняемый файл
+add_executable(GeometryProject ${SOURCE_FILES})
+# cmake_minimum_required(VERSION 3.10)
+# project(gtest)
 
-set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+# set(CMAKE_CXX_STANDARD 20)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(${INCLUDE_DIR})
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=maybe-uninitialized")
 
-file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false ${SOURCE_DIR}/*.cpp)
+# include(FetchContent)
+# FetchContent_Declare(
+#   googletest
+#   GIT_REPOSITORY https://github.com/google/googletest.git
+#   GIT_TAG v1.15.2
+#   TLS_VERIFY false
+# )
 
-add_library(gtest_lib ${SOURCES})
+# set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+# FetchContent_MakeAvailable(googletest)
 
-add_executable(gtest_exe main.cpp)
-target_link_libraries(gtest_exe PRIVATE gtest_lib)
+# set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-enable_testing()
+# include_directories(${INCLUDE_DIR})
 
-add_executable(tests test/test.cpp)
-target_link_libraries(tests PRIVATE gtest_lib gtest_main)
+# file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false ${SOURCE_DIR}/*.cpp)
 
-add_test(NAME MyProjectTests COMMAND tests)
+# add_library(gtest_lib ${SOURCES})
+
+# add_executable(gtest_exe main.cpp)
+# target_link_libraries(gtest_exe PRIVATE gtest_lib)
+
+# enable_testing()
+
+# add_executable(tests test/test.cpp)
+# target_link_libraries(tests PRIVATE gtest_lib gtest_main)
+
+# add_test(NAME MyProjectTests COMMAND tests)

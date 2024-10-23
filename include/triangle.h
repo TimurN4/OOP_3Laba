@@ -17,7 +17,7 @@ class triangle : public figure{
         operator double() const;
 
         friend std::istream& operator>>(std::istream& is, triangle& f);
-        friend std::ostream& operator<<(std::ostream& os, triangle& figure);
+        friend std::ostream& operator<<(std::ostream& os, const triangle& figure);
 
         bool valid_triangle() const;
     private : 

@@ -199,7 +199,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=gtest
+CMAKE_PROJECT_NAME:STATIC=GeometryProject
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.15.2
@@ -304,6 +304,15 @@ GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 //Use Abseil and RE2. Requires Abseil and RE2 to be separately
 // added to the build.
 GTEST_HAS_ABSL:BOOL=OFF
+
+//Value Computed by CMake
+GeometryProject_BINARY_DIR:STATIC=/home/timurnogaev/unix-shell-and-utils-TimurN4/OOP_3Laba
+
+//Value Computed by CMake
+GeometryProject_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+GeometryProject_SOURCE_DIR:STATIC=/home/timurnogaev/unix-shell-and-utils-TimurN4/OOP_3Laba
 
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
@@ -496,7 +505,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -4,7 +4,7 @@
 
 const double eps = 1e-6;
 
-double distance(const point& p1, const point& p2) {
+static double distance(const point& p1, const point& p2) {
     return std::sqrt((p1._x - p2._x) * (p1._x - p2._x) + (p1._y - p2._y) * (p1._y - p2._y));
 }
 
@@ -30,7 +30,7 @@ square::square(const point& x, const point& y, const point& z, const point& h) {
     this->points[0] = x;
     this->points[1] = y;
     this->points[2] = z;
-    this->points[4] = h;
+    this->points[3] = h;
     valid_square();
 }
 
@@ -102,7 +102,7 @@ std::istream& operator>>(std::istream& is, square& f) {
 
 }
 
-std::ostream& operator<<(std::ostream& os, square& figure) {
+std::ostream& operator<<(std::ostream& os, const square& figure) {
     os << "coordinates of square\n";
     for(int i = 0; i < 4; ++i) {
         os << figure.points[i];

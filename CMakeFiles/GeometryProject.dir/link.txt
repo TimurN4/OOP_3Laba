@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/GeometryProject.dir/main.cpp.o CMakeFiles/GeometryProject.dir/src/point.cpp.o CMakeFiles/GeometryProject.dir/src/triangle.cpp.o CMakeFiles/GeometryProject.dir/src/rectangle.cpp.o CMakeFiles/GeometryProject.dir/src/square.cpp.o -o GeometryProject 

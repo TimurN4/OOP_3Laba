@@ -17,7 +17,7 @@ class rectangle : public figure{
         operator double() const;
 
         friend std::istream& operator>>(std::istream& is, rectangle& f);
-        friend std::ostream& operator<<(std::ostream& os, rectangle& figure);
+        friend std::ostream& operator<<(std::ostream& os, const rectangle& figure);
     private : 
         point points[4];
         bool valid_rectangle() const;

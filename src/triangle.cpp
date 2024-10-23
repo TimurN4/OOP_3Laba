@@ -4,17 +4,30 @@
 
 const double eps = 1e-6;
 
+static double distance(const point& p1, const point& p2) {
+    return std::sqrt((p1._x - p2._x) * (p1._x - p2._x) + (p1._y - p2._y) * (p1._y - p2._y));
+}
+
 bool triangle::valid_triangle() const { // y = kx + b
-    double k = (this->points[1]._y - this->points[0]._y) / (this->points[1]._x - this->points[0]._x);
-    double b = (((this->points[1]._x - this->points[0]._x) * this->points[0]._y) - ((this->points[1]._y - this->points[0]._y) * this->points[0]._x)) / 
-    (this->points[1]._x - this->points[0]._x);
-    double kx_plus_b = k * this->points[2]._x + b;
+    // double k = (this->points[1]._y - this->points[0]._y) / (this->points[1]._x - this->points[0]._x);
+    // double b = (((this->points[1]._x - this->points[0]._x) * this->points[0]._y) - ((this->points[1]._y - this->points[0]._y) * this->points[0]._x)) / 
+    // (this->points[1]._x - this->points[0]._x);
+    // double kx_plus_b = k * this->points[2]._x + b;
 
-    if(abs(this->points[2]._y - kx_plus_b) > eps) {
-        throw std::invalid_argument("all 3 points are on the same line");
+    // if(abs(this->points[2]._y - kx_plus_b) > eps) {
+    //     throw std::invalid_argument("all 3 points are on the same line");
+    // }
+    double side_0_1 = distance(points[0], points[1]);
+    double side_1_2 = distance(points[1], points[2]);
+    double side_2_0 = distance(points[2], points[0]);
+
+    if(side_0_1 + side_1_2 > side_2_0 && side_1_2 + side_2_0 > side_0_1 && side_0_1 + side_2_0 > side_1_2) {
+        return true;
     }
-
-    return true;
+    else {
+        throw std::invalid_argument("cannot build triangle from this points");
+    }
+    
 }
 
 triangle::triangle(const point& x, const point& y, const point& z) {
@@ -62,7 +75,7 @@ bool triangle::operator==(const figure &treygolnik) const {
     return true;
 }
 
-void triangle::get_points_of_figure() const {
+void triangle::get_points_of_figure() const{
     std::cout << *this << std::endl;
 }
 
@@ -94,7 +107,7 @@ std::istream& operator>>(std::istream& is, triangle& f) {
 
 }
 
-std::ostream& operator<<(std::ostream& os, triangle& figure) {
+std::ostream& operator<<(std::ostream& os, const triangle& figure) {
     os << "coordinates of triangle\n";
     for(int i = 0; i < 3; ++i) {
         os << figure.points[i];

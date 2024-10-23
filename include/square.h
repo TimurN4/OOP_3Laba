@@ -17,7 +17,7 @@ class square : public figure{
         operator double() const;
 
         friend std::istream& operator>>(std::istream& is, square& f);
-        friend std::ostream& operator<<(std::ostream& os, square& figure);
+        friend std::ostream& operator<<(std::ostream& os, const square& figure);
     private : 
         point points[4];
         bool valid_square() const;
